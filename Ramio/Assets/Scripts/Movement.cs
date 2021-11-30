@@ -9,22 +9,49 @@ public class Movement : MonoBehaviour
     public float jumpSpeed = 1.0f;
     public bool grounded = false;
 
+    Rigidbody2D myRigidBody;
+    Animator myAnimator;
+
     void Start()
     {
-        
+        myRigidBody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        Run();
+        Jump();
+        //FlipCharacter();
+    }
+
+    private void Run()
+    {
         float moveX = Input.GetAxis("Horizontal");
         var velocity = GetComponent<Rigidbody2D>().velocity;
         velocity.x = moveX * moveSpeed;
-        GetComponent<Rigidbody2D>().velocity = velocity;
-        if(Input.GetButtonDown("Jump") && grounded)
+        myRigidBody.velocity = velocity;
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        myAnimator.SetBool("Running", playerHasHorizontalSpeed);
+    }
+
+    private void Jump()
+    {
+        if (Input.GetButtonDown("Jump") && grounded)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 100 *jumpSpeed));
+            myRigidBody.AddForce(new Vector2(0, 100 * jumpSpeed));
+            myAnimator.SetBool("Jumping", true);
         }
     }
+
+    //private void FlipCharacter()
+    //{
+        //bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        //if (playerHasHorizontalSpeed)
+       // {
+           // transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
+       // }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
