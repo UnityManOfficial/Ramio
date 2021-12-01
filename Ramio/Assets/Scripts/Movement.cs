@@ -11,11 +11,14 @@ public class Movement : MonoBehaviour
 
     Rigidbody2D myRigidBody;
     Animator myAnimator;
+    Collider2D myCollider2D;
 
     void Start()
     {
+
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        myCollider2D = GetComponent<Collider2D>();
     }
 
     void Update()
