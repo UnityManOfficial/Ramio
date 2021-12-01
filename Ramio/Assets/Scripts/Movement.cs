@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     public float moveSpeed = 1.0f;
     public float jumpSpeed = 1.0f;
     public bool grounded = false;
+    public AudioClip JumpSound;
+    public AudioClip DeathSound;
 
     Rigidbody2D myRigidBody;
     Animator myAnimator;
@@ -44,6 +46,7 @@ public class Movement : MonoBehaviour
         {
             myRigidBody.AddForce(new Vector2(0, 100 * jumpSpeed));
             myAnimator.SetBool("Jumping", true);
+            AudioSource.PlayClipAtPoint(JumpSound, Camera.main.transform.position, 0.5f);
         }
     }
 
