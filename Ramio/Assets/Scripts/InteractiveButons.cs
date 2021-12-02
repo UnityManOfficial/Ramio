@@ -4,24 +4,39 @@ using UnityEngine;
 
 public class InteractiveButons : MonoBehaviour
 {
-    [Header ("Settings")]
-    [Tooltip("Is it a pressueplate?")] public bool IsPressurePlate = false;
-    public bool HasBeenTurnedOn = false;
+
+    [Header("Settings")]
+    public bool Timer = false;
+    public float TimeCount = 1.0f;
+
+    Coroutine Countdown;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (IsPressurePlate && collision.gameObject.layer == 3)
+        if (collision.gameObject.layer == 3)
         {
-            HasBeenTurnedOn = true;
-            FindObjectOfType<Door>().OpenPlease();
+            if(Timer)
+            {
+                FindObjectOfType<Door>().OpenPlease();
+                Countdown = StartCoroutine(ClosingIn());
+            }
+            else if (!Timer)
+            {
+                FindObjectOfType<Door>().OpenPlease();
+            }
         }
+    }
+
+    IEnumerator ClosingIn()
+    {
+        yield return new WaitForSeconds(TimeCount);
+        FindObjectOfType<Door>().ClosePlease();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (IsPressurePlate)
+        if(!Timer)
         {
-            HasBeenTurnedOn = false;
             FindObjectOfType<Door>().ClosePlease();
         }
     }

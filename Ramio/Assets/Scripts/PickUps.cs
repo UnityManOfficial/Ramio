@@ -7,15 +7,14 @@ public class PickUps : MonoBehaviour
 
     public bool Speed = false;
     public bool Jump = false;
-    public bool Rock = false;
 
     [Range(1, 10)] public int SpeedV = 4;
     [Range(1, 10)] public int JumpV = 4;
-    [Range(1, 10)] public int RockCollect = 4;
     public AudioClip PickupSound;
 
+    Coroutine DeathCounter;
 
-    public int Powerup()
+    public int GetPowerup()
     {
         if(Speed)
         {
@@ -25,22 +24,35 @@ public class PickUps : MonoBehaviour
         {
             return JumpV;
         }
-        if(Rock)
-        {
-            return RockCollect;
-        }
         else
         {
             return 0;
         }
     }
 
+    public bool IsJump()
+    {
+        return Jump;
+    }
+
+    public bool IsSpeed()
+    {
+        return Speed;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 3)
         {
-            AudioSource.PlayClipAtPoint(PickupSound, Camera.main.transform.position, 0.5f);
-            Destroy(gameObject);
+            //AudioSource.PlayClipAtPoint(PickupSound, Camera.main.transform.position, 0.5f);
+            DeathCounter = StartCoroutine(DisappearLikeMyFather());
         }
+    }
+
+    IEnumerator DisappearLikeMyFather()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
 }

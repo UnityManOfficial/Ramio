@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
+    [Header("Movement Speed")]
     public float moveSpeed = 1.0f;
     public float jumpSpeed = 1.0f;
-    public bool grounded = false;
+    private bool grounded = false;
+
+    [Header("Settings")]
+    public float PowerUpsCountdown = 1.0f;
+    public float ReturnAfterPUSpeed = 5.0f;
+    public float ReturnAfterPUJump = 8.0f;
+
+    [Header("Audio Clips")]
     public AudioClip JumpSound;
     public AudioClip DeathSound;
 
@@ -15,9 +22,10 @@ public class Movement : MonoBehaviour
     Animator myAnimator;
     Collider2D myCollider2D;
 
+    Coroutine CountDownPower;
+
     void Start()
     {
-
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCollider2D = GetComponent<Collider2D>();
@@ -27,7 +35,7 @@ public class Movement : MonoBehaviour
     {
         Run();
         Jump();
-        //FlipCharacter();
+        FlipCharacter();
     }
 
     private void Run()
@@ -50,21 +58,39 @@ public class Movement : MonoBehaviour
         }
     }
 
-    //private void FlipCharacter()
-    //{
-        //bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
-        //if (playerHasHorizontalSpeed)
-       // {
-           // transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
-       // }
-    //}
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FlipCharacter()
     {
-        if (collision.gameObject.layer == 7)
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        if (playerHasHorizontalSpeed)
+        {
+            transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 7)
         {
             grounded = true;
         }
+        if (other.gameObject.layer == 10)
+        {
+            PickUps pickups = other.gameObject.GetComponent<PickUps>();
+            PowerUpAdd(pickups);
+        }
+    }
+
+    private void PowerUpAdd(PickUps pickups)
+    {
+        if(pickups.IsJump() == true)
+        {
+            jumpSpeed += pickups.GetPowerup();
+        }
+        if (pickups.IsSpeed() == true)
+        {
+            moveSpeed += pickups.GetPowerup();
+        }
+        CountDownPower = StartCoroutine(CountDownPowerUp());
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -81,6 +107,13 @@ public class Movement : MonoBehaviour
         {
             grounded = true;
         }
+    }
+
+    IEnumerator CountDownPowerUp()
+    {
+        yield return new WaitForSeconds(PowerUpsCountdown);
+        jumpSpeed = ReturnAfterPUJump;
+        moveSpeed = ReturnAfterPUSpeed;
     }
 
 }
