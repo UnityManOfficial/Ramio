@@ -9,7 +9,14 @@ public class InteractiveButons : MonoBehaviour
     public bool Timer = false;
     public float TimeCount = 1.0f;
 
+    Animator LeverAnimation;
+
     Coroutine Countdown;
+
+    private void Start()
+    {
+        LeverAnimation = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,11 +24,13 @@ public class InteractiveButons : MonoBehaviour
         {
             if(Timer)
             {
+                LeverAnimation.SetBool("PullTheLeverKronk", true);
                 FindObjectOfType<Door>().OpenPlease();
                 Countdown = StartCoroutine(ClosingIn());
             }
             else if (!Timer)
             {
+                LeverAnimation.SetBool("PullTheLeverKronk", true);
                 FindObjectOfType<Door>().OpenPlease();
             }
         }
@@ -30,6 +39,7 @@ public class InteractiveButons : MonoBehaviour
     IEnumerator ClosingIn()
     {
         yield return new WaitForSeconds(TimeCount);
+        LeverAnimation.SetBool("PullTheLeverKronk", false);
         FindObjectOfType<Door>().ClosePlease();
     }
 
@@ -37,6 +47,7 @@ public class InteractiveButons : MonoBehaviour
     {
         if(!Timer)
         {
+            LeverAnimation.SetBool("PullTheLeverKronk", false);
             FindObjectOfType<Door>().ClosePlease();
         }
     }
