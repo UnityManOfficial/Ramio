@@ -9,6 +9,9 @@ public class Movement : MonoBehaviour
     public float jumpSpeed = 1.0f;
     private bool grounded = false;
 
+    [Header("Player")]
+    public float Health = 5f;
+
     [Header("Settings")]
     public float PowerUpsCountdown = 1.0f;
     public float ReturnAfterPUSpeed = 5.0f;
@@ -86,9 +89,13 @@ public class Movement : MonoBehaviour
         {
             jumpSpeed += pickups.GetPowerup();
         }
-        if (pickups.IsSpeed() == true)
+        if(pickups.IsSpeed() == true)
         {
             moveSpeed += pickups.GetPowerup();
+        }
+        if(pickups.IsHealth() == true)
+        {
+            Health += pickups.GetPowerup();
         }
         CountDownPower = StartCoroutine(CountDownPowerUp());
     }

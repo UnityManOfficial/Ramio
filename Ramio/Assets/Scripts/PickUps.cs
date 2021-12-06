@@ -7,9 +7,11 @@ public class PickUps : MonoBehaviour
 
     public bool Speed = false;
     public bool Jump = false;
+    public bool Health = false;
 
     [Range(1, 10)] public int SpeedV = 4;
     [Range(1, 10)] public int JumpV = 4;
+    [Range(1, 4)] public int HealthV = 1;
     public AudioClip PickupSound;
 
     Coroutine DeathCounter;
@@ -23,6 +25,10 @@ public class PickUps : MonoBehaviour
         if(Jump)
         {
             return JumpV;
+        }
+        if(Health)
+        {
+            return HealthV;
         }
         else
         {
@@ -38,6 +44,11 @@ public class PickUps : MonoBehaviour
     public bool IsSpeed()
     {
         return Speed;
+    }
+
+    public bool IsHealth()
+    {
+        return Health;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
