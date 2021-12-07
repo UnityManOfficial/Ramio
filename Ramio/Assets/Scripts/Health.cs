@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
         HealthBar.fillAmount = CurrentHealth / MaxHealth;
         if(CurrentHealth >= 3)
         {
-            HealthBar.color(255, 0, 255);
+            //HealthBar.color(255, 0, 255);
         }
     }
 }
