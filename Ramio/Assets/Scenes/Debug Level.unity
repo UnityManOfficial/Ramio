@@ -1028,30 +1028,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 3479426754825849413, guid: 791d35e50f107c64f965bbfc73e55c70, type: 3}
   m_PrefabInstance: {fileID: 3479426754859914283}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1185084061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5547081182905268052, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
-  m_PrefabInstance: {fileID: 5547081182482764095}
-  m_PrefabAsset: {fileID: 0}
---- !u!320 &1185084066
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185084061}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 24d8b91260062f1418edb9e375933075, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -3078609452379416743, guid: 24d8b91260062f1418edb9e375933075, type: 2}
-    value: {fileID: 519420030}
-  m_ExposedReferences:
-    m_References: []
 --- !u!1 &1674749224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,9 +1760,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5138307259808919636, guid: d29bed620114abc4d933bd2ca6f2512f, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5138307259808919636, guid: d29bed620114abc4d933bd2ca6f2512f, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5138307259808919639, guid: d29bed620114abc4d933bd2ca6f2512f, type: 3}
       propertyPath: m_Name
-      value: Power Up (Both)
+      value: Power Up (Health)
       objectReference: {fileID: 0}
     - target: {fileID: 5138307259808919659, guid: d29bed620114abc4d933bd2ca6f2512f, type: 3}
       propertyPath: m_RootOrder
@@ -1841,6 +1825,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1185084066, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
+      propertyPath: m_SceneBindings.Array.data[0].value
+      value: 
+      objectReference: {fileID: 519420030}
     - target: {fileID: 5547081182905268048, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1885,19 +1873,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5547081182905268050, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
-      propertyPath: Health
+    - target: {fileID: 5547081182905268049, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
+      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5547081182905268050, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
-      propertyPath: HealthV
-      value: 1
+    - target: {fileID: 5547081182905268049, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
+      propertyPath: m_FlipY
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5547081182905268052, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
       propertyPath: m_Name
       value: Power Up (Jump)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1185084066, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8f95455e865094d44b2fd622ec6a87ff, type: 3}
 --- !u!1001 &5582776771030265425
 PrefabInstance:
@@ -2062,6 +2051,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7623291354876383312, guid: b39e0f296a5611f4999376cc79edaab7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623291354876383313, guid: b39e0f296a5611f4999376cc79edaab7, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623291354876383313, guid: b39e0f296a5611f4999376cc79edaab7, type: 3}
+      propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7623291354876383324, guid: b39e0f296a5611f4999376cc79edaab7, type: 3}
