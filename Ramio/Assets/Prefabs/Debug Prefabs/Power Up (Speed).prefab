@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -1615591449214129068, guid: fc4cab7694652a74e88c40769b6e3d64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,8 +98,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 1
   Jump: 0
+  Health: 0
   SpeedV: 2
   JumpV: 4
+  HealthV: 1
   PickupSound: {fileID: 8300000, guid: c487038dc7c0a7c42bdd575df5d6537d, type: 3}
 --- !u!61 &7623291354876383327
 BoxCollider2D:

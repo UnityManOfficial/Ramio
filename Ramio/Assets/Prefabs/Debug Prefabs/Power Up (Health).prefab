@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5138307259808919637}
   - component: {fileID: 5138307259808919638}
   m_Layer: 10
-  m_Name: Power Up (Both)
+  m_Name: Power Up (Health)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: -700145753515148034, guid: fc4cab7694652a74e88c40769b6e3d64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,10 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c4fbaf3479996a49ab503a560cbb250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
-  Jump: 1
+  Speed: 0
+  Jump: 0
+  Health: 1
   SpeedV: 2
   JumpV: 4
+  HealthV: 4
   PickupSound: {fileID: 8300000, guid: c487038dc7c0a7c42bdd575df5d6537d, type: 3}
 --- !u!61 &5138307259808919638
 BoxCollider2D:
