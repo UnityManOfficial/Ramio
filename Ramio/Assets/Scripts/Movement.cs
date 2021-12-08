@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+
+    public Health health;
+
     [Header("Movement Speed")]
     public float moveSpeed = 1.0f;
     public float jumpSpeed = 1.0f;
     private bool grounded = false;
 
     [Header("Player")]
-    public float Health = 5f;
+    public int HP;
+    public int MaxHP = 5;
 
     [Header("Settings")]
     public float PowerUpsCountdown = 1.0f;
@@ -32,6 +36,8 @@ public class Movement : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCollider2D = GetComponent<Collider2D>();
+        HP = MaxHP;
+        health.SetMaxHealth(MaxHP);
     }
 
     void Update()
@@ -39,6 +45,16 @@ public class Movement : MonoBehaviour
         Run();
         Jump();
         FlipCharacter();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(1);
+        }
+    }
+
+    void TakeDamage(int damage)
+    {
+        HP -= damage;
+        health.SetHealth(HP);
     }
 
     private void Run()
@@ -95,7 +111,8 @@ public class Movement : MonoBehaviour
         }
         if(pickups.IsHealth() == true)
         {
-            Health += pickups.GetPowerup();
+            HP += pickups.GetPowerup();
+            health.SetHealth(HP);
         }
         CountDownPower = StartCoroutine(CountDownPowerUp());
     }

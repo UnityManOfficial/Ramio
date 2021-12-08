@@ -6,27 +6,42 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
 
-    private Image HealthBar;
-    Movement Player;
-    private float MaxHealth = 5f;
-    public float CurrentHealth;
+    public Slider slider;
+    public Gradient gradient;
+    public Image fill;
 
+    Animator Warning;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        HealthBar = GetComponent<Image>();
-        Player = FindObjectOfType<Movement>();
+        Warning = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetMaxHealth(int HP)
     {
-        CurrentHealth = Player.Health;
-        HealthBar.fillAmount = CurrentHealth / MaxHealth;
-        if(CurrentHealth >= 3)
+        slider.maxValue = HP;
+        slider.value = HP;
+        fill.color = gradient.Evaluate(1f);
+    }
+
+    public void SetHealth(int HP)
+    {
+        slider.value = HP;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
+        if(HP <= 3)
         {
-            
+            Warning.SetBool("LowHealth", true);
+            Warning.SetFloat("ACK", 1f);
+            if (HP <= 2)
+            {
+                Warning.SetFloat("ACK", 5f);
+            }
+        }
+        else if (HP >= 3)
+        {
+            Warning.SetBool("LowHealth", false);
         }
     }
+
+
 }
