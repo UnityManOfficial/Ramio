@@ -10,6 +10,12 @@ public class Health : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
+    Animator Warning;
+
+    private void Start()
+    {
+        Warning = GetComponent<Animator>();
+    }
 
     public void SetMaxHealth(int HP)
     {
@@ -22,6 +28,19 @@ public class Health : MonoBehaviour
     {
         slider.value = HP;
         fill.color = gradient.Evaluate(slider.normalizedValue);
+        if(HP <= 3)
+        {
+            Warning.SetBool("LowHealth", true);
+            Warning.SetFloat("ACK", 1f);
+            if (HP <= 2)
+            {
+                Warning.SetFloat("ACK", 5f);
+            }
+        }
+        else if (HP >= 3)
+        {
+            Warning.SetBool("LowHealth", false);
+        }
     }
 
 
