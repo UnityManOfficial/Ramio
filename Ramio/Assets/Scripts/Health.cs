@@ -6,27 +6,18 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
 
-    private Image HealthBar;
-    Movement Player;
-    private float MaxHealth = 5f;
-    public float CurrentHealth;
+    public Slider slider;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void SetMaxHealth(int HP)
     {
-        HealthBar = GetComponent<Image>();
-        Player = FindObjectOfType<Movement>();
+        slider.maxValue = HP;
+        slider.value = HP;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetHealth(int HP)
     {
-        CurrentHealth = Player.Health;
-        HealthBar.fillAmount = CurrentHealth / MaxHealth;
-        if(CurrentHealth >= 3)
-        {
-            
-        }
+        slider.value = HP;
     }
+
+
 }
