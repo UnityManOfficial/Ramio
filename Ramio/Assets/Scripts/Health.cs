@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
 
     Animator Warning;
 
+    Coroutine ResetDie;
+
     private void Start()
     {
         Warning = GetComponent<Animator>();
@@ -35,6 +37,12 @@ public class Health : MonoBehaviour
             if (HP <= 2)
             {
                 Warning.SetFloat("ACK", 5f);
+                if(HP <= 0)
+                {
+                    Warning.SetBool("Died", true);
+                    Warning.SetFloat("ACK", 1f);
+                    ResetDie = StartCoroutine(RestartD());
+                }
             }
         }
         else if (HP >= 3)
@@ -43,5 +51,10 @@ public class Health : MonoBehaviour
         }
     }
 
+    IEnumerator RestartD()
+    {
+        yield return new WaitForSeconds(3);
+        Warning.SetBool("Died", false);
+    }
 
 }

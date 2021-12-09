@@ -101,12 +101,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86ad3fb33b2510478431b518f2e59b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
   moveSpeed: 5
   jumpSpeed: 8
+  HP: 0
+  MaxHP: 10
+  lives: 3
   PowerUpsCountdown: 5
   ReturnAfterPUSpeed: 5
   ReturnAfterPUJump: 8
-  JumpSound: {fileID: 0}
+  EndTransition: {fileID: 0}
+  LivesCounter: {fileID: 0}
+  JumpSound: {fileID: 8300000, guid: c487038dc7c0a7c42bdd575df5d6537d, type: 3}
   DeathSound: {fileID: 0}
 --- !u!61 &5914308433832059321
 BoxCollider2D:

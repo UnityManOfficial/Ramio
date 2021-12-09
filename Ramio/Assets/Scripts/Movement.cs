@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
+
 
 public class Movement : MonoBehaviour
 {
@@ -15,11 +18,14 @@ public class Movement : MonoBehaviour
     [Header("Player")]
     public int HP;
     public int MaxHP = 5;
+    public int lives = 3;
 
     [Header("Settings")]
     public float PowerUpsCountdown = 1.0f;
     public float ReturnAfterPUSpeed = 5.0f;
     public float ReturnAfterPUJump = 8.0f;
+    public GameObject EndTransition;
+    public TextMeshProUGUI LivesCounter;
 
     [Header("Audio Clips")]
     public AudioClip JumpSound;
@@ -38,6 +44,7 @@ public class Movement : MonoBehaviour
         myCollider2D = GetComponent<Collider2D>();
         HP = MaxHP;
         health.SetMaxHealth(MaxHP);
+        LivesCounter.text = lives.ToString();
     }
 
     void Update()
@@ -45,6 +52,8 @@ public class Movement : MonoBehaviour
         Run();
         Jump();
         FlipCharacter();
+        PlayerDeath();
+        GameOver();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(1);
@@ -55,6 +64,25 @@ public class Movement : MonoBehaviour
     {
         HP -= damage;
         health.SetHealth(HP);
+    }
+
+    public void GameOver()
+    {
+        if(lives == 0)
+        {
+            EndTransition.SetActive(true);
+            StartCoroutine(LoadOver());
+        }
+    }
+
+
+    public void PlayerDeath()
+    {
+        if(HP <= 0)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(25f, 25f);
+            StartCoroutine(Oops());
+        }
     }
 
     private void Run()
@@ -86,16 +114,26 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.layer == 7)
+        if (collision.gameObject.layer == 7)
         {
             grounded = true;
         }
-        if (other.gameObject.layer == 10)
+        else if (collision.gameObject.layer == 10)
         {
-            PickUps pickups = other.gameObject.GetComponent<PickUps>();
+            PickUps pickups = collision.gameObject.GetComponent<PickUps>();
             PowerUpAdd(pickups);
+        }
+        else if(collision.tag == "NextLevel")
+        {
+            EndTransition.SetActive(true);
+            StartCoroutine(NextLevel());
+        }
+        else if (collision.tag == "PrevLevel")
+        {
+            EndTransition.SetActive(true);
+            StartCoroutine(PrevLevel());
         }
     }
 
@@ -133,11 +171,37 @@ public class Movement : MonoBehaviour
         }
     }
 
+    IEnumerator Oops()
+    {
+        lives -= 1;
+        HP = MaxHP;
+        yield return new WaitForSeconds(1);
+        LivesCounter.text = lives.ToString();
+        health.SetHealth(HP);
+    }
+
     IEnumerator CountDownPowerUp()
     {
         yield return new WaitForSeconds(PowerUpsCountdown);
         jumpSpeed = ReturnAfterPUJump;
         moveSpeed = ReturnAfterPUSpeed;
+    }
+    IEnumerator NextLevel()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    IEnumerator PrevLevel()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    IEnumerator LoadOver()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("GameOver");
     }
 
 }
