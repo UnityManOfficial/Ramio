@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5914308433832059327}
   - component: {fileID: 5914308433832059320}
   - component: {fileID: 5914308433832059326}
+  - component: {fileID: -5432600664075824844}
   - component: {fileID: 5914308433832059321}
   - component: {fileID: 5914308433832059322}
   - component: {fileID: 5914308433832059325}
@@ -114,6 +115,22 @@ MonoBehaviour:
   LivesCounter: {fileID: 0}
   JumpSound: {fileID: 8300000, guid: c487038dc7c0a7c42bdd575df5d6537d, type: 3}
   DeathSound: {fileID: 0}
+--- !u!114 &-5432600664075824844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5914308433832059323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221f78a261b506446b1ed8a8ad777776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformsLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  jumpVelocity: 15
 --- !u!61 &5914308433832059321
 BoxCollider2D:
   m_ObjectHideFlags: 0
