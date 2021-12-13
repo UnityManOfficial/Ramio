@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
                 }
             }
         }
-        else if (HP >= 3)
+        if (HP > 3)
         {
             Warning.SetBool("LowHealth", false);
         }
@@ -53,7 +53,7 @@ public class Health : MonoBehaviour
 
     IEnumerator RestartD()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         Warning.SetBool("Died", false);
     }
 
