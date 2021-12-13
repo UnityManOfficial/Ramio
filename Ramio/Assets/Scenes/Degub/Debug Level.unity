@@ -802,7 +802,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1374008639}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7830127}
+        m_TargetAssemblyTypeName: Level, Assembly-CSharp
+        m_MethodName: LoadStartMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1374008639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1558,12 +1570,16 @@ PrefabInstance:
       value: PlayerTest
       objectReference: {fileID: 0}
     - target: {fileID: 5914308433832059326, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
+      propertyPath: MaxHP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914308433832059326, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
       propertyPath: health
       value: 
       objectReference: {fileID: 1139237838}
     - target: {fileID: 5914308433832059326, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
       propertyPath: jumpSpeed
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5914308433832059326, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
       propertyPath: LivesCounter
@@ -1617,7 +1633,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5432600664075824844, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
 --- !u!1001 &7043326272372081160
 PrefabInstance:

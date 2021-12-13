@@ -13,7 +13,10 @@ public class Movement : MonoBehaviour
     [Header("Movement Speed")]
     public float moveSpeed = 1.0f;
     public float jumpSpeed = 1.0f;
+    public float DoubleJumpSpeed = 1.0f;
     private bool grounded = false;
+    public bool DoubleJumpYes = false;
+    public bool DJEnable = true;
 
     [Header("Player")]
     public int HP;
@@ -51,6 +54,10 @@ public class Movement : MonoBehaviour
     {
         Run();
         Jump();
+        if(DoubleJumpYes && DJEnable)
+        {
+            DoubleJump();
+        }
         FlipCharacter();
         PlayerDeath();
         GameOver();
@@ -102,6 +109,16 @@ public class Movement : MonoBehaviour
             myRigidBody.AddForce(new Vector2(0, 100 * jumpSpeed));
             myAnimator.SetBool("Jumping", true);
             AudioSource.PlayClipAtPoint(JumpSound, Camera.main.transform.position, 0.5f);
+            DoubleJumpYes = true;
+        }
+    }
+
+    private void DoubleJump()
+    {
+        if (Input.GetButtonDown("Jump") && DoubleJumpYes == true && !grounded)
+        {
+            myRigidBody.AddForce(new Vector2(0, 100 * jumpSpeed));
+            DoubleJumpYes = false;
         }
     }
 
@@ -119,6 +136,7 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             grounded = true;
+            DoubleJumpYes = false;
         }
         else if (collision.gameObject.layer == 10)
         {
