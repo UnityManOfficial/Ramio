@@ -7,7 +7,8 @@ public class DoubleJump : MonoBehaviour
     [SerializeField] private LayerMask platformsLayerMask;
     private Rigidbody2D rigidbody2d;
     private BoxCollider2D boxCollider2d;
-    private bool canDoubleJump;
+    private int airJumpCount;
+    private int airJumpCountMax;
     public float jumpVelocity = 15f;
 
     // Start is called before the first frame update
@@ -15,6 +16,7 @@ public class DoubleJump : MonoBehaviour
     {
         rigidbody2d = transform.GetComponent<Rigidbody2D>();
         boxCollider2d = transform.GetComponent<BoxCollider2D>();
+        airJumpCountMax = 1;
     }
 
     // Update is called once per frame
@@ -22,9 +24,8 @@ public class DoubleJump : MonoBehaviour
     {
         if (IsGrounded())
         {
-            canDoubleJump = true;
+            airJumpCount = 0;
         }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (IsGrounded())
@@ -33,13 +34,27 @@ public class DoubleJump : MonoBehaviour
             }
             else
             {
-                if (canDoubleJump)
+                if (airJumpCount < airJumpCountMax)
                 {
                     rigidbody2d.velocity = Vector2.up * jumpVelocity;
-                    canDoubleJump = false;
+                    airJumpCount++;
                 }
             }
         }
+    }
+
+    private void ResetAirJumpCount()
+    {
+        if (airJumpCount > 0)
+        {
+            airJumpCount = 0;
+        }
+    }
+
+    public void TouchedJumpOrb()
+    {
+        ResetAirJumpCount();
+        rigidbody2d.velocity = Vector2.up * jumpVelocity;
     }
 
     private bool IsGrounded()
