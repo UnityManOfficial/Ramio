@@ -311,18 +311,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 844210837}
     - target: {fileID: 5914308433832059326, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
-      propertyPath: DJEnable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5914308433832059326, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
-      propertyPath: JumpSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 1b04313b85dc8ad418855c2164fbfdd4, type: 3}
-    - target: {fileID: 5914308433832059326, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
-      propertyPath: DamageSound
-      value: 
-      objectReference: {fileID: 8300000, guid: a5051ccdeee23cf4daa55fdf41f27ce4, type: 3}
-    - target: {fileID: 5914308433832059326, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
       propertyPath: LivesCounter
       value: 
       objectReference: {fileID: 1851912819}
@@ -330,10 +318,6 @@ PrefabInstance:
       propertyPath: EndTransition
       value: 
       objectReference: {fileID: 526736318}
-    - target: {fileID: 5914308433832059326, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
-      propertyPath: DoubleJumpSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 5365bd6185b56e742a060b92adaa6ab5, type: 3}
     - target: {fileID: 5914308433832059327, guid: 7d1ac4aff6fe154459e20d3fba9f6465, type: 3}
       propertyPath: m_RootOrder
       value: 3
