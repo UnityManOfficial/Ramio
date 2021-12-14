@@ -33,7 +33,9 @@ public class Movement : MonoBehaviour
 
     [Header("Audio Clips")]
     public AudioClip JumpSound;
+    public AudioClip DoubleJumpSound;
     public AudioClip DeathSound;
+    public AudioClip DamageSound;
 
     Rigidbody2D myRigidBody;
     Animator myAnimator;
@@ -98,7 +100,7 @@ public class Movement : MonoBehaviour
         {
             myRigidBody.AddForce(new Vector2(0, 100 * jumpSpeed));
             myAnimator.SetBool("Jumping", true);
-            AudioSource.PlayClipAtPoint(JumpSound, Camera.main.transform.position, 0.5f);
+            AudioSource.PlayClipAtPoint(JumpSound, Camera.main.transform.position, 0.03f);
             DoubleJumpYes = true;
         }
     }
@@ -108,6 +110,7 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && DoubleJumpYes == true && !grounded)
         {
             myRigidBody.AddForce(new Vector2(0, 100 * jumpSpeed));
+            AudioSource.PlayClipAtPoint(DoubleJumpSound, Camera.main.transform.position, 0.03f);
             DoubleJumpYes = false;
         }
     }
@@ -157,6 +160,7 @@ public class Movement : MonoBehaviour
         myRigidBody.AddForce(new Vector2(200, 200));
         health.SetHealth(HP);
         StartCoroutine(Inv());
+        AudioSource.PlayClipAtPoint(DamageSound, Camera.main.transform.position, 0.03f);
     }
 
     private void PowerUpAdd(PickUps pickups)

@@ -106,7 +106,7 @@ MonoBehaviour:
   jumpSpeed: 8
   DoubleJumpSpeed: 1
   DoubleJumpYes: 0
-  DJEnable: 0
+  DJEnable: 1
   HP: 0
   MaxHP: 10
   lives: 3
@@ -115,8 +115,10 @@ MonoBehaviour:
   ReturnAfterPUJump: 8
   EndTransition: {fileID: 0}
   LivesCounter: {fileID: 0}
-  JumpSound: {fileID: 8300000, guid: c487038dc7c0a7c42bdd575df5d6537d, type: 3}
+  JumpSound: {fileID: 8300000, guid: 1b04313b85dc8ad418855c2164fbfdd4, type: 3}
+  DoubleJumpSound: {fileID: 8300000, guid: 5365bd6185b56e742a060b92adaa6ab5, type: 3}
   DeathSound: {fileID: 0}
+  DamageSound: {fileID: 8300000, guid: a5051ccdeee23cf4daa55fdf41f27ce4, type: 3}
 --- !u!61 &5914308433832059321
 BoxCollider2D:
   m_ObjectHideFlags: 0
