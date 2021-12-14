@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NextLevel
   - PrevLevel
+  - Damage
   layers:
   - Default
   - TransparentFX

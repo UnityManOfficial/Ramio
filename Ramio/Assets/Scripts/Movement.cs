@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     public int HP;
     public int MaxHP = 5;
     public int lives = 3;
+    private bool NoDamage = false;
 
     [Header("Settings")]
     public float PowerUpsCountdown = 1.0f;
@@ -61,18 +62,7 @@ public class Movement : MonoBehaviour
         FlipCharacter();
         PlayerDeath();
         GameOver();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(1);
-        }
     }
-
-    void TakeDamage(int damage)
-    {
-        HP -= damage;
-        health.SetHealth(HP);
-    }
-
     public void GameOver()
     {
         if(lives == 0)
@@ -87,7 +77,7 @@ public class Movement : MonoBehaviour
     {
         if(HP <= 0)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(25f, 25f);
+            myRigidBody.velocity = new Vector2(25f, 25f);
             StartCoroutine(Oops());
         }
     }
@@ -153,6 +143,20 @@ public class Movement : MonoBehaviour
             EndTransition.SetActive(true);
             StartCoroutine(PrevLevel());
         }
+        else if (collision.tag == "Damage" && !NoDamage)
+        {
+            Damage damage = collision.gameObject.GetComponent<Damage>();
+            TakeDamage(damage);
+        }
+    }
+
+    private void TakeDamage(Damage damage)
+    {
+        myRigidBody.velocity = new Vector2(10f, 10f);
+        HP -= damage.GetDamage();
+        myRigidBody.AddForce(new Vector2(200, 200));
+        health.SetHealth(HP);
+        StartCoroutine(Inv());
     }
 
     private void PowerUpAdd(PickUps pickups)
@@ -187,6 +191,15 @@ public class Movement : MonoBehaviour
         {
             grounded = true;
         }
+    }
+
+    IEnumerator Inv()
+    {
+        NoDamage = true;
+        myAnimator.SetBool("Inv", true);
+        yield return new WaitForSeconds(1);
+        myAnimator.SetBool("Inv", false);
+        NoDamage = false;
     }
 
     IEnumerator Oops()
