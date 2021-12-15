@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     public Slider slider;
     public Gradient gradient;
     public Image fill;
+    public AudioClip BreakSound;
 
     Animator Warning;
 
@@ -42,6 +43,7 @@ public class Health : MonoBehaviour
                     Warning.SetBool("Died", true);
                     Warning.SetFloat("ACK", 1f);
                     ResetDie = StartCoroutine(RestartD());
+                    AudioSource.PlayClipAtPoint(BreakSound, Camera.main.transform.position, 0.03f);
                 }
             }
         }

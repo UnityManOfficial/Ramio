@@ -115,10 +115,11 @@ MonoBehaviour:
   ReturnAfterPUJump: 8
   EndTransition: {fileID: 0}
   LivesCounter: {fileID: 0}
-  JumpSound: {fileID: 8300000, guid: 1b04313b85dc8ad418855c2164fbfdd4, type: 3}
-  DoubleJumpSound: {fileID: 8300000, guid: 5365bd6185b56e742a060b92adaa6ab5, type: 3}
-  DeathSound: {fileID: 0}
-  DamageSound: {fileID: 8300000, guid: a5051ccdeee23cf4daa55fdf41f27ce4, type: 3}
+  JumpSound: {fileID: 8300000, guid: 4b6f561885d5fbf41aaa3a439cba6461, type: 3}
+  DoubleJumpSound: {fileID: 8300000, guid: 79de7231c2d02f7409e1c7088d3ea3db, type: 3}
+  DeathSound: {fileID: 8300000, guid: 657af3e0fa42ca841b393d03c76a8bd2, type: 3}
+  DamageSound: {fileID: 8300000, guid: 657af3e0fa42ca841b393d03c76a8bd2, type: 3}
+  PickUpSound: {fileID: 8300000, guid: be4b4e99086c8ac419bab4803212f1e2, type: 3}
 --- !u!61 &5914308433832059321
 BoxCollider2D:
   m_ObjectHideFlags: 0

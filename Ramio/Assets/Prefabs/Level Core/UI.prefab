@@ -863,7 +863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -21.50003, y: -20.900055}
+  m_AnchoredPosition: {x: -21.5, y: -20.900055}
   m_SizeDelta: {x: 46.319, y: 40.220398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5076955497762031197
@@ -1185,6 +1185,7 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   fill: {fileID: 5076955496881693264}
+  BreakSound: {fileID: 8300000, guid: 1619aa65b68aadc43ab0463ff6776694, type: 3}
 --- !u!95 &5076955498300260537
 Animator:
   serializedVersion: 3

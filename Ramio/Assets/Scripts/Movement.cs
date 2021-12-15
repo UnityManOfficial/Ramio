@@ -36,6 +36,7 @@ public class Movement : MonoBehaviour
     public AudioClip DoubleJumpSound;
     public AudioClip DeathSound;
     public AudioClip DamageSound;
+    public AudioClip PickUpSound;
 
     Rigidbody2D myRigidBody;
     Animator myAnimator;
@@ -65,6 +66,7 @@ public class Movement : MonoBehaviour
         PlayerDeath();
         GameOver();
     }
+
     public void GameOver()
     {
         if(lives == 0)
@@ -128,12 +130,14 @@ public class Movement : MonoBehaviour
     {
         if (collision.gameObject.layer == 7)
         {
+            myAnimator.SetBool("Jumping", false);
             grounded = true;
             DoubleJumpYes = false;
         }
         else if (collision.gameObject.layer == 10)
         {
             PickUps pickups = collision.gameObject.GetComponent<PickUps>();
+            AudioSource.PlayClipAtPoint(PickUpSound, Camera.main.transform.position, 0.03f);
             PowerUpAdd(pickups);
         }
         else if(collision.tag == "NextLevel")
@@ -210,9 +214,13 @@ public class Movement : MonoBehaviour
     {
         lives -= 1;
         HP = MaxHP;
+        NoDamage = true;
+        myAnimator.SetBool("Inv", true);
         yield return new WaitForSeconds(1);
         LivesCounter.text = lives.ToString();
         health.SetHealth(HP);
+        myAnimator.SetBool("Inv", false);
+        NoDamage = false;
     }
 
     IEnumerator CountDownPowerUp()
