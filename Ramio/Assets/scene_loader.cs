@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.ScenManement;
+using UnityEngine.SceneManagement;
+
 public class scene_loader : MonoBehaviour
 {
-  
+ public void LoadNextScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildindex;
+    } 
 }
