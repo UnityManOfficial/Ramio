@@ -118,8 +118,28 @@ MonoBehaviour:
   JumpSound: {fileID: 8300000, guid: 4b6f561885d5fbf41aaa3a439cba6461, type: 3}
   DoubleJumpSound: {fileID: 8300000, guid: 79de7231c2d02f7409e1c7088d3ea3db, type: 3}
   DeathSound: {fileID: 8300000, guid: 657af3e0fa42ca841b393d03c76a8bd2, type: 3}
-  DamageSound: {fileID: 8300000, guid: 657af3e0fa42ca841b393d03c76a8bd2, type: 3}
+  DamageSounds:
+  - {fileID: 8300000, guid: b307a54b7fc422342984429ac125e50d, type: 3}
+  - {fileID: 8300000, guid: 4680ee546578b384291b35d2e31e0670, type: 3}
+  - {fileID: 8300000, guid: 2a9a4038bb4c30b4093f054bd1e1c529, type: 3}
+  - {fileID: 8300000, guid: d9a58c249faaa7042a310bf2ca19f9af, type: 3}
+  - {fileID: 8300000, guid: 3b3740f92feb68e4db92b80e4f32ec30, type: 3}
+  - {fileID: 8300000, guid: 9488607eb46186f40affa892724f1507, type: 3}
+  - {fileID: 8300000, guid: a22c723bf037f6a41b80a9081d66ab7a, type: 3}
+  - {fileID: 8300000, guid: 7ce1eab72f070aa4faec11dc748b6ea7, type: 3}
+  - {fileID: 8300000, guid: b25adf09afab1e94b906cfd42fcdf5b6, type: 3}
+  - {fileID: 8300000, guid: 9f51f6bf6b7f7bd45976f434fd8a76b1, type: 3}
   PickUpSound: {fileID: 8300000, guid: be4b4e99086c8ac419bab4803212f1e2, type: 3}
+  FootStepsSounds:
+  - {fileID: 8300000, guid: 04a5f14374ba2f64d903fce4915b2b43, type: 3}
+  - {fileID: 8300000, guid: 95019383f7800774ab8bfd6e726d46a1, type: 3}
+  - {fileID: 8300000, guid: 675b15ee3ce4011418425f598ea940fa, type: 3}
+  - {fileID: 8300000, guid: 44a44067ea0e58c4299e0fd3b844c75b, type: 3}
+  - {fileID: 8300000, guid: 050de3e9c55b5ef42b1ad777e0e9f0b2, type: 3}
+  - {fileID: 8300000, guid: 54ad7e9886a2f2a409e5e493d658e6cf, type: 3}
+  - {fileID: 8300000, guid: 1704076c80abb284caa6b09a92ec5f74, type: 3}
+  - {fileID: 8300000, guid: bc7d1278952287a4f9be2f6c5e80cd68, type: 3}
+  - {fileID: 8300000, guid: d5763c561856fe4408ae6766c3320f3b, type: 3}
 --- !u!61 &5914308433832059321
 BoxCollider2D:
   m_ObjectHideFlags: 0

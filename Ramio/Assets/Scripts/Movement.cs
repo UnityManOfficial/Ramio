@@ -35,9 +35,9 @@ public class Movement : MonoBehaviour
     public AudioClip JumpSound;
     public AudioClip DoubleJumpSound;
     public AudioClip DeathSound;
-    public AudioClip DamageSound;
+    public AudioClip[] DamageSounds;
     public AudioClip PickUpSound;
-    public AudioClip FootstepSound;
+    public AudioClip[] FootStepsSounds;
 
     Rigidbody2D myRigidBody;
     Animator myAnimator;
@@ -165,7 +165,8 @@ public class Movement : MonoBehaviour
         myRigidBody.AddForce(new Vector2(200, 200));
         health.SetHealth(HP);
         StartCoroutine(Inv());
-        AudioSource.PlayClipAtPoint(DamageSound, Camera.main.transform.position, 0.05f);
+        AudioClip DamageTake = GetRandomDamageClip();
+        AudioSource.PlayClipAtPoint(DamageTake, Camera.main.transform.position, 0.05f);
     }
 
     private void PowerUpAdd(PickUps pickups)
@@ -200,6 +201,22 @@ public class Movement : MonoBehaviour
         {
             grounded = true;
         }
+    }
+
+    private void Step()
+    {
+        AudioClip Steps = GetRandomStepClip();
+        AudioSource.PlayClipAtPoint(Steps, Camera.main.transform.position, 0.05f);
+    }
+
+    private AudioClip GetRandomStepClip()
+    {
+        return FootStepsSounds[UnityEngine.Random.Range(0, FootStepsSounds.Length)];
+    }
+
+    private AudioClip GetRandomDamageClip()
+    {
+        return DamageSounds[UnityEngine.Random.Range(0, DamageSounds.Length)];
     }
 
     IEnumerator Inv()
