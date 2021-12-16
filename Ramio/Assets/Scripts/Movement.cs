@@ -38,9 +38,11 @@ public class Movement : MonoBehaviour
     public AudioClip[] DamageSounds;
     public AudioClip PickUpSound;
     public AudioClip[] FootStepsSounds;
+    public AudioClip[] ReviveSounds;
 
     private int airJumpCount;
     private int airJumpCountMax;
+    public static Vector2 LastCheckpoint = new Vector2(0, 0);
 
     Rigidbody2D myRigidBody;
     Animator myAnimator;
@@ -85,7 +87,6 @@ public class Movement : MonoBehaviour
     {
         if(HP <= 0)
         {
-            myRigidBody.velocity = new Vector2(25f, 25f);
             StartCoroutine(Oops());
         }
     }
@@ -234,6 +235,16 @@ public class Movement : MonoBehaviour
         AudioClip Steps = GetRandomStepClip();
         AudioSource.PlayClipAtPoint(Steps, Camera.main.transform.position, 0.05f);
     }
+    
+    private void ReviveClip()
+    {
+        
+    }
+
+    private AudioClip GetRandomReviveClip()
+    {
+        return FootStepsSounds[UnityEngine.Random.Range(0, ReviveSounds.Length)];
+    }
 
     private AudioClip GetRandomStepClip()
     {
@@ -260,10 +271,15 @@ public class Movement : MonoBehaviour
         HP = MaxHP;
         NoDamage = true;
         myAnimator.SetBool("Inv", true);
-        yield return new WaitForSeconds(1);
+        gameObject.transform.position = LastCheckpoint;
+        myAnimator.SetBool("Died", true);
+        AudioClip Revive = GetRandomReviveClip();
+        AudioSource.PlayClipAtPoint(Revive, Camera.main.transform.position, 0.05f);
+        yield return new WaitForSeconds(2);
         LivesCounter.text = lives.ToString();
         health.SetHealth(HP);
         myAnimator.SetBool("Inv", false);
+        myAnimator.SetBool("Died", false);
         NoDamage = false;
     }
 
