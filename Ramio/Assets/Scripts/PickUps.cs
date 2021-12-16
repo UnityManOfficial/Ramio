@@ -62,7 +62,7 @@ public class PickUps : MonoBehaviour
 
     IEnumerator DisappearLikeMyFather()
     {
-        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }
