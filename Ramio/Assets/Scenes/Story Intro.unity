@@ -369,6 +369,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &606139814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 606139815}
+  m_Layer: 0
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &606139815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606139814}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 668582121}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &668582119
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 668582121}
   - component: {fileID: 668582120}
+  - component: {fileID: 668582122}
   m_Layer: 0
   m_Name: Story Scene
   m_TagString: Untagged
@@ -419,9 +450,51 @@ Transform:
   - {fileID: 442949705}
   - {fileID: 1434603658}
   - {fileID: 217532329}
+  - {fileID: 606139815}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &668582122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668582119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86ad3fb33b2510478431b518f2e59b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 0}
+  moveSpeed: 1
+  jumpSpeed: 1
+  DoubleJumpSpeed: 1
+  DoubleJumpYes: 0
+  DJEnable: 1
+  HP: 0
+  MaxHP: 5
+  lives: 3
+  PowerUpsCountdown: 1
+  ReturnAfterPUSpeed: 5
+  ReturnAfterPUJump: 8
+  EndTransition: {fileID: 0}
+  LivesCounter: {fileID: 0}
+  JumpSound: {fileID: 0}
+  DoubleJumpSound: {fileID: 0}
+  DeathSound: {fileID: 0}
+  DamageSounds: []
+  PickUpSound: {fileID: 0}
+  FootStepsSounds:
+  - {fileID: 8300000, guid: 04a5f14374ba2f64d903fce4915b2b43, type: 3}
+  - {fileID: 8300000, guid: 95019383f7800774ab8bfd6e726d46a1, type: 3}
+  - {fileID: 8300000, guid: 675b15ee3ce4011418425f598ea940fa, type: 3}
+  - {fileID: 8300000, guid: 44a44067ea0e58c4299e0fd3b844c75b, type: 3}
+  - {fileID: 8300000, guid: 050de3e9c55b5ef42b1ad777e0e9f0b2, type: 3}
+  - {fileID: 8300000, guid: 54ad7e9886a2f2a409e5e493d658e6cf, type: 3}
+  - {fileID: 8300000, guid: 1704076c80abb284caa6b09a92ec5f74, type: 3}
+  - {fileID: 8300000, guid: bc7d1278952287a4f9be2f6c5e80cd68, type: 3}
+  - {fileID: 8300000, guid: d5763c561856fe4408ae6766c3320f3b, type: 3}
 --- !u!1 &1113170731
 GameObject:
   m_ObjectHideFlags: 0
