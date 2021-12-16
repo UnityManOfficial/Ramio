@@ -468,13 +468,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   moveSpeed: 1
-  jumpSpeed: 1
+  jumpVelocity: 15
   DoubleJumpSpeed: 1
   DoubleJumpYes: 0
   DJEnable: 1
   HP: 0
   MaxHP: 5
   lives: 3
+  Volume: 0.5
   PowerUpsCountdown: 1
   ReturnAfterPUSpeed: 5
   ReturnAfterPUJump: 8
@@ -495,6 +496,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1704076c80abb284caa6b09a92ec5f74, type: 3}
   - {fileID: 8300000, guid: bc7d1278952287a4f9be2f6c5e80cd68, type: 3}
   - {fileID: 8300000, guid: d5763c561856fe4408ae6766c3320f3b, type: 3}
+  ReviveSounds: []
 --- !u!1 &1113170731
 GameObject:
   m_ObjectHideFlags: 0
