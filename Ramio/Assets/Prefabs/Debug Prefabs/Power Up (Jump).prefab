@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 5547081182905268048}
   - component: {fileID: 5547081182905268049}
   - component: {fileID: 5547081182905268050}
-  - component: {fileID: 5547081182905268051}
-  - component: {fileID: 1185084066}
+  - component: {fileID: 1185084062}
   m_Layer: 10
   m_Name: Power Up (Jump)
   m_TagString: Untagged
@@ -104,8 +103,8 @@ MonoBehaviour:
   JumpV: 4
   HealthV: 1
   PickupSound: {fileID: 8300000, guid: c487038dc7c0a7c42bdd575df5d6537d, type: 3}
---- !u!61 &5547081182905268051
-BoxCollider2D:
+--- !u!58 &1185084062
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -117,35 +116,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.013040066, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!320 &1185084066
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5547081182905268052}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 24d8b91260062f1418edb9e375933075, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: -3078609452379416743, guid: 24d8b91260062f1418edb9e375933075, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
+  m_Radius: 0.35321808

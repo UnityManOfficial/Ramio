@@ -12,5 +12,4 @@ public class Scene_loader : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSsceneIndex + 1);
     } 
-    public voidL
 }

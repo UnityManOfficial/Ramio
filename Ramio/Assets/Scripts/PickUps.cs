@@ -55,7 +55,7 @@ public class PickUps : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            //AudioSource.PlayClipAtPoint(PickupSound, Camera.main.transform.position, 0.5f);
+            AudioSource.PlayClipAtPoint(PickupSound, Camera.main.transform.position, 0.5f);
             DeathCounter = StartCoroutine(DisappearLikeMyFather());
         }
     }
