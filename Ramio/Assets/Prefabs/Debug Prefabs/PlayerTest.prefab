@@ -273,12 +273,13 @@ MonoBehaviour:
   DoubleJumpSpeed: 1
   DoubleJumpYes: 0
   DJEnable: 1
-  HP: 0
+  HP: 3
   MaxHP: 10
-  lives: 3
+  lives: 99
+  Volume: 0.1
   PowerUpsCountdown: 5
   ReturnAfterPUSpeed: 5
-  ReturnAfterPUJump: 8
+  ReturnAfterPUJump: 15
   EndTransition: {fileID: 0}
   LivesCounter: {fileID: 0}
   JumpSound: {fileID: 8300000, guid: 4b6f561885d5fbf41aaa3a439cba6461, type: 3}

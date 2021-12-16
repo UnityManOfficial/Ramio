@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
     private bool NoDamage = false;
 
     [Header("Settings")]
+    [SerializeField] [Range(0, 1)] float Volume = 1.0f;
     public float PowerUpsCountdown = 1.0f;
     public float ReturnAfterPUSpeed = 5.0f;
     public float ReturnAfterPUJump = 8.0f;
@@ -111,7 +112,7 @@ public class Movement : MonoBehaviour
         {
             myRigidBody.velocity = Vector2.up * jumpVelocity;
             myAnimator.SetBool("Jumping", true);
-            AudioSource.PlayClipAtPoint(JumpSound, Camera.main.transform.position, 0.05f);
+            AudioSource.PlayClipAtPoint(JumpSound, Camera.main.transform.position, Volume);
             DoubleJumpYes = true;
         }
         else if (airJumpCount < airJumpCountMax)
@@ -140,7 +141,7 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && DoubleJumpYes == true && !grounded)
         {
             myRigidBody.velocity = Vector2.up * jumpVelocity;
-            AudioSource.PlayClipAtPoint(DoubleJumpSound, Camera.main.transform.position, 0.05f);
+            AudioSource.PlayClipAtPoint(DoubleJumpSound, Camera.main.transform.position, Volume);
             DoubleJumpYes = false;
         }
     }
@@ -165,7 +166,7 @@ public class Movement : MonoBehaviour
         else if (collision.gameObject.layer == 10)
         {
             PickUps pickups = collision.gameObject.GetComponent<PickUps>();
-            AudioSource.PlayClipAtPoint(PickUpSound, Camera.main.transform.position, 0.05f);
+            AudioSource.PlayClipAtPoint(PickUpSound, Camera.main.transform.position, Volume);
             PowerUpAdd(pickups);
         }
         else if(collision.tag == "NextLevel")
@@ -193,7 +194,7 @@ public class Movement : MonoBehaviour
         health.SetHealth(HP);
         StartCoroutine(Inv());
         AudioClip DamageTake = GetRandomDamageClip();
-        AudioSource.PlayClipAtPoint(DamageTake, Camera.main.transform.position, 0.05f);
+        AudioSource.PlayClipAtPoint(DamageTake, Camera.main.transform.position, Volume);
     }
 
     private void PowerUpAdd(PickUps pickups)
@@ -233,17 +234,18 @@ public class Movement : MonoBehaviour
     private void Step()
     {
         AudioClip Steps = GetRandomStepClip();
-        AudioSource.PlayClipAtPoint(Steps, Camera.main.transform.position, 0.05f);
+        AudioSource.PlayClipAtPoint(Steps, Camera.main.transform.position, Volume);
     }
     
     private void ReviveClip()
     {
-        
+        AudioClip Revive = GetRandomReviveClip();
+        AudioSource.PlayClipAtPoint(Revive, Camera.main.transform.position, Volume);
     }
 
     private AudioClip GetRandomReviveClip()
     {
-        return FootStepsSounds[UnityEngine.Random.Range(0, ReviveSounds.Length)];
+        return ReviveSounds[UnityEngine.Random.Range(0, ReviveSounds.Length)];
     }
 
     private AudioClip GetRandomStepClip()
@@ -273,8 +275,6 @@ public class Movement : MonoBehaviour
         myAnimator.SetBool("Inv", true);
         gameObject.transform.position = LastCheckpoint;
         myAnimator.SetBool("Died", true);
-        AudioClip Revive = GetRandomReviveClip();
-        AudioSource.PlayClipAtPoint(Revive, Camera.main.transform.position, 0.05f);
         yield return new WaitForSeconds(2);
         LivesCounter.text = lives.ToString();
         health.SetHealth(HP);

@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
                     Warning.SetBool("Died", true);
                     Warning.SetFloat("ACK", 1f);
                     ResetDie = StartCoroutine(RestartD());
-                    AudioSource.PlayClipAtPoint(BreakSound, Camera.main.transform.position, 0.03f);
+                    AudioSource.PlayClipAtPoint(BreakSound, Camera.main.transform.position, 0.1f);
                 }
             }
         }

@@ -12,7 +12,6 @@ public class PickUps : MonoBehaviour
     [Range(1, 10)] public int SpeedV = 4;
     [Range(1, 10)] public int JumpV = 4;
     [Range(1, 4)] public int HealthV = 1;
-    public AudioClip PickupSound;
 
     Coroutine DeathCounter;
 
@@ -55,7 +54,6 @@ public class PickUps : MonoBehaviour
     {
         if (collision.gameObject.layer == 3)
         {
-            //AudioSource.PlayClipAtPoint(PickupSound, Camera.main.transform.position, 0.5f);
             DeathCounter = StartCoroutine(DisappearLikeMyFather());
         }
     }
