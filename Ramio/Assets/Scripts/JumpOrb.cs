@@ -30,7 +30,7 @@ public class JumpOrb : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        DoubleJump player = collision.gameObject.GetComponent<DoubleJump>();
+        Movement player = collision.gameObject.GetComponent<Movement>();
         if (JumpOrbActive && player != null)
         {
             JumpOrbActive = false;
