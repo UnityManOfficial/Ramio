@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
 
     [Header("Movement Speed")]
     public float moveSpeed = 1.0f;
-    public float jumpSpeed = 1.0f;
+    public float jumpVelocity = 15f;
     public float DoubleJumpSpeed = 1.0f;
     private bool grounded = false;
     public bool DoubleJumpYes = false;
@@ -39,6 +39,9 @@ public class Movement : MonoBehaviour
     public AudioClip PickUpSound;
     public AudioClip[] FootStepsSounds;
 
+    private int airJumpCount;
+    private int airJumpCountMax;
+
     Rigidbody2D myRigidBody;
     Animator myAnimator;
     Collider2D myCollider2D;
@@ -47,7 +50,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        myRigidBody = GetComponent<Rigidbody2D>();
+        myRigidBody = transform.GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCollider2D = GetComponent<Collider2D>();
         HP = MaxHP;
@@ -99,20 +102,43 @@ public class Movement : MonoBehaviour
 
     private void Jump()
     {
+        if (grounded)
+        {
+            airJumpCount = 0;
+        }
         if (Input.GetButtonDown("Jump") && grounded)
         {
-            myRigidBody.AddForce(new Vector2(0, 100 * jumpSpeed));
+            myRigidBody.velocity = Vector2.up * jumpVelocity;
             myAnimator.SetBool("Jumping", true);
             AudioSource.PlayClipAtPoint(JumpSound, Camera.main.transform.position, 0.05f);
             DoubleJumpYes = true;
         }
+        else if (airJumpCount < airJumpCountMax)
+        {
+            myRigidBody.velocity = Vector2.up * jumpVelocity;
+            airJumpCount++;
+        }
+    }
+
+    private void ResetAirJumpCount()
+    {
+        if (airJumpCount > 0)
+        {
+            airJumpCount = 0;
+        }
+    }
+
+    public void TouchedJumpOrb()
+    {
+        ResetAirJumpCount();
+        myRigidBody.velocity = Vector2.up * jumpVelocity;
     }
 
     private void DoubleJump()
     {
         if (Input.GetButtonDown("Jump") && DoubleJumpYes == true && !grounded)
         {
-            myRigidBody.AddForce(new Vector2(0, 100 * jumpSpeed));
+            myRigidBody.velocity = Vector2.up * jumpVelocity;
             AudioSource.PlayClipAtPoint(DoubleJumpSound, Camera.main.transform.position, 0.05f);
             DoubleJumpYes = false;
         }
@@ -173,7 +199,7 @@ public class Movement : MonoBehaviour
     {
         if(pickups.IsJump() == true)
         {
-            jumpSpeed += pickups.GetPowerup();
+            jumpVelocity += pickups.GetPowerup();
         }
         if(pickups.IsSpeed() == true)
         {
@@ -244,7 +270,7 @@ public class Movement : MonoBehaviour
     IEnumerator CountDownPowerUp()
     {
         yield return new WaitForSeconds(PowerUpsCountdown);
-        jumpSpeed = ReturnAfterPUJump;
+        jumpVelocity = ReturnAfterPUJump;
         moveSpeed = ReturnAfterPUSpeed;
     }
     IEnumerator NextLevel()

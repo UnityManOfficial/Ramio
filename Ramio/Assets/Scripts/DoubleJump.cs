@@ -26,7 +26,7 @@ public class DoubleJump : MonoBehaviour
         {
             airJumpCount = 0;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if (IsGrounded())
             {
