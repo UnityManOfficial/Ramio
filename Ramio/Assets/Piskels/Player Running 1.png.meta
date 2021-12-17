@@ -100,7 +100,7 @@ TextureImporter:
       name: Player Running 1_0
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 106
         width: 64
         height: 64
@@ -121,7 +121,7 @@ TextureImporter:
       name: Player Running 1_1
       rect:
         serializedVersion: 2
-        x: 161
+        x: 160
         y: 106
         width: 64
         height: 64
